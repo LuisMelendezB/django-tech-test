@@ -1,3 +1,11 @@
 from django.db import models
 
-# Create your models here.
+
+class CustomerOrder(models.Model):
+
+    ORD_ID = models.CharField(max_length=100)
+    ORD_DT = models.DateField()
+    QT_ORDD = models.IntegerField()
+
+    def __str__(self):
+        return self.ORD_ID
