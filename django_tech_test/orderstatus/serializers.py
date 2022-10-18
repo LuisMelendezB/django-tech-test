@@ -6,7 +6,7 @@ class OrderDetailSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = OrderDetail
-        fields = '__all__'
+        fields = ('status',)
 
 
 class OrderStatusSerializer(serializers.ModelSerializer):
@@ -15,21 +15,25 @@ class OrderStatusSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Order
-        fields = '__all__'
+        fields = ('order_number', 'status')
 
-    
     def get_status(self, obj):
+
+        ORDER_HIERARCHY = {0:'CANCELLED',
+                            1:'SHIPPED',
+                            2:'PENDING'}
+
         queryset = OrderDetail.objects.filter(order_number=obj)
         order_lines = OrderDetailSerializer(queryset, many=True, read_only=True)
         status = list(set([value['status'] for value in order_lines.data]))
         
         if len(status) == 1:
             return status[0]
-        elif len(status) == 2 and 'CANCELLED' in status:
+        elif len(status) == 2 and ORDER_HIERARCHY[0] in status:
             for order_status in status:
-                if order_status != 'CANCELLED':
+                if order_status != ORDER_HIERARCHY[0]:
                     return order_status
         else:
-            return 'PENINDG'
+            return ORDER_HIERARCHY[2]
 
 

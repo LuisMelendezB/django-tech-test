@@ -1,10 +1,12 @@
 from orderstatus.models import Order, OrderDetail
 import csv
 
+#Import Orders data from dataset (.csv file)
+
 def run():
     with open('orderstatus/dataset.csv') as file:
         reader = csv.reader(file)
-        next(reader)  # Advance past the header
+        next(reader)  
         rows = [row for row in reader]
 
         Order.objects.all().delete()
@@ -17,14 +19,5 @@ def run():
 
         for row in rows:
             order = Order.objects.filter(order_number=row[0]).first()
-            print("order",order)
             new_orderline = OrderDetail(order_number=order, item_name = row[1], status = row[2])
             new_orderline.save()
-"""         for row in reader:
-            print(row)
-
-            genre, _ = Genre.objects.get_or_create(name=row[-1])
-            film = Film(title=row[0],
-                        year=row[2],
-                        genre=genre)
-            film.save() """
