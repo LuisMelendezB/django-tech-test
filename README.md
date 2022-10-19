@@ -71,7 +71,7 @@ You have a table containing a large number of orders over several years - a samp
 |114-0291773-7262697|Fall|
 |114-0291773-7262677|Winter|
 |114-9900513-7761000|Fall|
-|112-5230502-8173028|Summer|
+|112-5230502-8173028|Winter|
 |112-7714081-3300254|Spring|
 |114-5384551-1465853|Spring|
 |114-7232801-4607440|Fall|
