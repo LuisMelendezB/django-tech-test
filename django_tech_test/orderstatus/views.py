@@ -4,6 +4,7 @@ from rest_framework.response import Response
 from .serializers import OrderStatusSerializer
 from .models import Order
 
+
 class OrderStatusView(APIView):
 
     def get(self, request):

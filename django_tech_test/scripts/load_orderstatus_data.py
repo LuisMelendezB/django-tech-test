@@ -19,5 +19,7 @@ def run():
 
         for row in rows:
             order = Order.objects.filter(order_number=row[0]).first()
-            new_orderline = OrderDetail(order_number=order, item_name = row[1], status = row[2])
+            new_orderline = OrderDetail(order_number=order,
+                                        item_name = row[1],
+                                        status = row[2])
             new_orderline.save()

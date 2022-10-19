@@ -1,11 +1,11 @@
 from rest_framework.views import APIView
 from rest_framework.response import Response
-from .serializers import OrderSeasonsSerializer
-from .models import CustomerOrder
+from .serializers import SeasonOrderSerializer
+from .models import SeasonOrder
 
-class OrderSeasonsView(APIView):
+class SeasonOrderView(APIView):
 
     def get(self, request):
-        queryset = CustomerOrder.objects.all()
-        serializer = OrderSeasonsSerializer(queryset, many=True)
+        queryset = SeasonOrder.objects.all()
+        serializer = SeasonOrderSerializer(queryset, many=True)
         return Response(serializer.data)
