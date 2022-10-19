@@ -1,7 +1,7 @@
 # django-tech-test
 
 ## Docker installation example
-
+Run at main directory
 ```sh
 docker build --tag django-tech-test .
 docker run --publish 8000:8000 django-tech-test
