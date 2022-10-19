@@ -1,6 +1,6 @@
 # django-tech-test
 
-## Installation
+## Local Installation
 
 1. Install the dependencies and clone django directory
 
@@ -9,7 +9,7 @@ pip install requirements.txt
 python manage.py runserver
 ```
 
-2. Load the datasets to populate database:
+2. The sqlite database cointains all the datasets, you can delete the database and reload the datasets to populate new database with:
 ```sh
 python manage.py runscript load_orderstatus_data
 python manage.py runscript load_seasons_data
@@ -17,7 +17,7 @@ python manage.py runscript load_weather_data
 ```
 
 
-# Endpoints
+# Endpoints at http://127.0.0.1:8000/
 ## /orderstatus
 
 You have a data source containing order-line data (each order can have multiple order lines based on the number of products ordered under that specific order). An order line item can be in one of the following three statuses: Pending, Shipped, Cancelled. You want to determine the status of the overall order based on the statuses of each individual order line item for that order. For example, if you have three items in order number 1234, and two of them are marked “Shipped” but one is marked “Pending” then the overall order status is Pending. If all are marked “Shipped” then the Status is “Shipped”.
