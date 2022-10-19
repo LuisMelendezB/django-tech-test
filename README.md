@@ -9,15 +9,17 @@ docker run --publish 8000:8000 django-tech-test
 
 ## Local Installation
 
-1. Install the dependencies and clone django directory
+Install the dependencies and clone django directory
 
 ```sh
 pip install requirements.txt
 python manage.py runserver
 ```
 
-2. The sqlite database cointains all the datasets, you can delete the database and reload the datasets to populate new database with:
+To restore datasets (if sqlite database is deleted or not cloned):
 ```sh
+python manage.py makemigrations
+python manage.py migrate
 python manage.py runscript load_orderstatus_data
 python manage.py runscript load_seasons_data
 python manage.py runscript load_weather_data
